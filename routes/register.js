@@ -8,10 +8,11 @@ router.get('/', function(request, response){
   response.sendFile(path.resolve(__dirname, '../public/views/register.html'));
 });
 
-router.post('/', function(request, response, next){
-  Users.create(request.body, function(err, post){
+router.post('/', function(request, response){
+  Users.CreateUser(request.body.username, request.body.password, function(err){
     if (err){
-      next(err);
+      console.log('create post err', err);
+      response.sendStatus(500);
     }
     else {
       response.redirect('/');

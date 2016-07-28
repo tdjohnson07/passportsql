@@ -5,6 +5,7 @@ var path = require('path');
 
 router.get('/', function(request, response,next){
   response.json(request.isAuthenticated());
+  next();
 });
 
 router.get('/', function(request, response){
